@@ -107,7 +107,7 @@ class Layout extends React.Component {
               </script>
             </Helmet>
             <NavWrapper className="container">
-              <Logo exact to="/">Cubik</Logo>
+              <Logo to="/">Cubik</Logo>
               <StyledNav>
                 <NavItem to="/about">About</NavItem>
                 <NavItem to="/blog">Blog</NavItem>
