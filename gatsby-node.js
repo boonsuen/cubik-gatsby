@@ -1,7 +1,47 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-// You can delete this file if you're not using it
+const enableBundleAnalyzer = false;
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions
+}) => {
+  if (stage === 'build-javascript' && enableBundleAnalyzer) {
+    actions.setWebpackConfig({
+      plugins: [
+        new BundleAnalyzerPlugin()
+      ]
+    });
+  }
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        // Firebase module needs browser globals
+        rules: [
+          {
+            test: /firebase/, 
+            use: loaders.null(),
+          }
+        ]
+      }
+    });
+  }
+};
+
+// exports.createPages = ({ graphql, actions }) => {
+//   const { createPage } = actions
+//   return new Promise((resolve, reject) => {
+//     const App = path.resolve(`src/components/CubikApp.js`);
+//     resolve(
+//       createPage({
+//         path: '/app',
+//         component: App,
+//         context: {},
+//       })
+//     )
+//   })
+// }
