@@ -1,0 +1,29 @@
+{
+  "name": "cubik-gatsby",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boonsuen/cubik-gatsby"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "format": "prettier --write '**/*.js'"
+  },
+  "dependencies": {
+    "firebase": "^5.5.3",
+    "gatsby": "^2.0.0",
+    "gatsby-plugin-manifest": "^2.0.2",
+    "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "react": "^16.5.1",
+    "react-beautiful-dnd": "^9.0.2",
+    "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0",
+    "react-modal": "^3.6.1"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.2"
+  }
+}
