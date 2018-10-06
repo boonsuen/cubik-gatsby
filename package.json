@@ -7,8 +7,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
     "dev": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
     "format": "prettier --write '**/*.js'"
   },
   "dependencies": {
