@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
-import './injectGlobal.css';
+import GlobalStyle, { fontFaceRules } from './GlobalStyle.css';
 import favicon from '../assets/img/favicon.png';
 
 const Logo = styled(Link)`
@@ -92,6 +92,7 @@ class Layout extends React.Component {
             <Helmet>
               <title>{data.site.siteMetadata.title}</title>
               <link rel="icon" href={favicon} />
+              <style>{fontFaceRules}</style>
               <script>
               {`
                 const pFL = localStorage.getItem('preventFlashLoad');
@@ -106,6 +107,7 @@ class Layout extends React.Component {
               `}
               </script>
             </Helmet>
+            <GlobalStyle />
             <NavWrapper className="container">
               <Logo to="/">Cubik</Logo>
               <StyledNav>

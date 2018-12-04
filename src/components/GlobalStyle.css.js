@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import AvenirNextRegularSubsetWoff2 from '../assets/fonts/AvenirNextLTPro-Regular-subset.woff2';
 import AvenirNextRegularSubsetWoff from '../assets/fonts/AvenirNextLTPro-Regular-subset.woff';
@@ -12,7 +12,12 @@ import AvenirNextDemiSubsetWoff from '../assets/fonts/AvenirNextLTPro-Demi-subse
 import AvenirNextBoldSubsetWoff2 from '../assets/fonts/AvenirNextLTPro-Bold-subset.woff2';
 import AvenirNextBoldSubsetWoff from '../assets/fonts/AvenirNextLTPro-Bold-subset.woff';
 
-injectGlobal`
+// Why are the @font-face rules extracted to be used on its own? 
+// GlobalStyle causes custom fonts to be re-requested when
+// it get rerendered, or some other possible behaviors like
+// rehyration, component state change.
+// This will cause font loading problems like FOIT and FOUT. Bad bad.
+export const fontFaceRules = `
   @font-face {
     font-family: "Avenir Next";
     src: url(${AvenirNextRegularSubsetWoff2}) format('woff2'),
@@ -40,7 +45,9 @@ injectGlobal`
         url(${AvenirNextBoldSubsetWoff}) format('woff');
     font-weight: 700;
   }
+`;
 
+const GlobalStyle = createGlobalStyle`
   html, #root {
     height: 100%;
   }
@@ -93,3 +100,5 @@ injectGlobal`
     margin: auto;
   }
 `;
+
+export default GlobalStyle;
