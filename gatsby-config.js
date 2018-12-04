@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-react-helmet'
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify'
   ]
 }
